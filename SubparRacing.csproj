@@ -20,10 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IRSDKSharper" Version="1.1.1" />
-    <PackageReference Include="WPF-UI" Version="3.0.4" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+    <PackageReference Include="WPF-UI" Version="3.0.5" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2 " />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Joshua King\Downloads\IRSDKSharper-main (1)\IRSDKSharper-main\IRSDKSharper.csproj" />
   </ItemGroup>
 
   <ItemGroup>

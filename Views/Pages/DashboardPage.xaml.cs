@@ -1,6 +1,8 @@
 ﻿using SubparRacing.ViewModels.Pages;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
+using System.Runtime.Intrinsics.Arm;
+using System.Windows.Controls;
 using Wpf.Ui.Controls;
 
 namespace SubparRacing.Views.Pages
@@ -23,6 +25,27 @@ namespace SubparRacing.Views.Pages
             InitializeComponent();
         }
 
+        public void OnTextChangedEventHandler(object sender, TextChangedEventArgs e)
+        {
+            Debug.WriteLine("A THING HAS HAPPENED");
+            Wpf.Ui.Controls.TextBox? textBox = sender as Wpf.Ui.Controls.TextBox;
+
+            
+
+            if (textBox != null)
+            {
+                // Get the new text value
+                string newText = textBox.Text;
+
+                // Use the new text value as needed
+                Debug.WriteLine("New text: " + newText);
+                App.arduinoConnection.SendData("DEBUG", newText);
+            } else
+            {
+                Debug.WriteLine("Text box = null");
+            }
+        }
+
         private void OnStart()
         {
             Debug.WriteLine("No longer waiting");
@@ -37,11 +60,39 @@ namespace SubparRacing.Views.Pages
 
             uint bitField = telemetryService.irsdk.Data.GetBitField("SessionFlags");
             List<string> flags = GetActiveFlags(bitField);
-            ViewModel.Flags = string.Join(",", flags);
+            ViewModel.Flags = string.Join(", ", flags);
+
+            SetFlag(bitField);
+
+        }
+
+        private void SetFlag(uint bitField)
+        {
+            bool visible = false;
+
+           
+
+            
+
+            bool blue = (bitField & Flags.Blue) != 0;
+            if (blue) { visible = true; ViewModel.Colour = "BLUE"; }
+
+            bool green = (bitField & Flags.Green) != 0 || (bitField & Flags.GreenHeld) != 0 || (bitField & Flags.StartGo) != 0;
+            if (green) { visible = true; ViewModel.Colour = "LIGHTGREEN"; }
+
+            bool white = (bitField & Flags.White) != 0;
+            if (white) { visible = true; ViewModel.Colour = "SNOW"; }
 
             bool yellow = (bitField & Flags.Caution) != 0 || (bitField & Flags.CautionWaving) != 0 || (bitField & Flags.Yellow) != 0 || (bitField & Flags.YellowWaving) != 0;
-            ViewModel.Yellow = yellow ? "VISIBLE" : "HIDDEN";
+            if (yellow) { visible = true; ViewModel.Colour = "YELLOW"; }
 
+            if (visible)
+            {
+                ViewModel.FlagVisisble = "VISIBLE";
+            } else
+            {
+                ViewModel.FlagVisisble = "HIDDEN";
+            }
         }
 
         class Flags

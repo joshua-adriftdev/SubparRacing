@@ -21,6 +21,11 @@ namespace SubparRacing
     {
         public static TelemetryService TelemetryService { get; private set; }
 
+        static readonly byte[] handshake = { (byte)'s', (byte)'u', (byte)'b', (byte)'p', (byte)'a', (byte)'r' };
+        public static readonly ArduinoConnection arduinoConnection = new ArduinoConnection(handshake);
+
+        public static bool arduinoIsConnected = false;
+
         // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
         // https://docs.microsoft.com/dotnet/core/extensions/generic-host
         // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
@@ -76,9 +81,31 @@ namespace SubparRacing
             TelemetryService = new TelemetryService();
             _host.Start();
             
-            TelemetryService.Start();
+            //TelemetryService.Start();
 
-            
+            arduinoConnection.ArduinoConnected += OnArduinoConnected;
+            arduinoConnection.ArduinoDisconnected += OnArduinoDisconnected;
+
+            Debug.Write("Connecting to Arduino...");
+            arduinoConnection.Start();
+
+            RandomDataSender randomDataSender = new RandomDataSender(arduinoConnection);
+            //randomDataSender.Start();
+
+        }
+
+        private void OnArduinoConnected(object connection, ArduinoConnection.ConnectionEventArgs connectionInformation)
+        {
+            arduinoIsConnected = true;
+
+            Debug.WriteLine($"Arduino connected on port {connectionInformation.ArduinoPort?.PortName}!");
+        }
+
+        private void OnArduinoDisconnected(object connection, ArduinoConnection.ConnectionEventArgs connectionInformation)
+        {
+            arduinoIsConnected = false;
+
+            Debug.WriteLine("Arduino disconnected!");
         }
 
         /// <summary>
@@ -86,8 +113,9 @@ namespace SubparRacing
         /// </summary>
         private async void OnExit(object sender, ExitEventArgs e)
         {
-
+            arduinoConnection.Stop();
             TelemetryService.Stop();
+
             await _host.StopAsync();
 
             _host.Dispose();

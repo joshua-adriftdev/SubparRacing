@@ -32,6 +32,18 @@ namespace SubparRacing
 
         private void OnTelemetryData()
         {
+            var rpm = irsdk.Data.GetValue("RPM");
+            if (App.arduinoIsConnected) 
+            {
+                Debug.Write("Sending to Arduino.");
+                var arduinoPort = App.arduinoConnection.ArduinoPort;
+
+                if (arduinoPort != null)
+                {
+                    arduinoPort.Write($"A{rpm}");
+                }
+            }
+
             OnTelemetry.Invoke();
         }
 

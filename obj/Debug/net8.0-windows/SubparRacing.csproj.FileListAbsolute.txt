@@ -60,3 +60,13 @@ E:\Subpar Racing\SubparRacing\SubparRacing\obj\Debug\net8.0-windows\refint\Subpa
 E:\Subpar Racing\SubparRacing\SubparRacing\obj\Debug\net8.0-windows\SubparRacing.pdb
 E:\Subpar Racing\SubparRacing\SubparRacing\obj\Debug\net8.0-windows\SubparRacing.genruntimeconfig.cache
 E:\Subpar Racing\SubparRacing\SubparRacing\obj\Debug\net8.0-windows\ref\SubparRacing.dll
+E:\Subpar Racing\SubparRacing\SubparRacing\obj\Debug\net8.0-windows\SubparRacing.sourcelink.json
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\IRSDKSharper.pdb
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\System.IO.Ports.dll
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.IO.Ports.dll
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.IO.Ports.dll

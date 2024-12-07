@@ -18,40 +18,67 @@
 
     <Grid>
         <Grid>
-                <Label
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Visibility="{Binding ViewModel.IsWaiting}"
-        Content="Waiting to connect..." Grid.Column="1" FontSize="24" />
-            <ui:Button
-            Width="80"
-            Height="80"
-            Margin="2"
-            Padding="0"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Appearance="Secondary"
-            Visibility="{Binding ViewModel.Yellow}"
-            Background="Yellow"
-            FontSize="25"
-            Icon="Fluent24" />  
+            <Label
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Waiting to connect..."
+                FontSize="24"
+                Visibility="{Binding ViewModel.IsWaiting}" />
         </Grid>
 
         <Grid VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock
-                Margin="0,0,0,0"
-                VerticalAlignment="Center"
-                Text="{Binding ViewModel.RevCount, Mode=OneWay}" HorizontalAlignment="Center" />
-            <TextBlock
-                Margin="0,30,0,0"
-            VerticalAlignment="Center"
-            Text="{Binding ViewModel.Flags, Mode=OneWay}" HorizontalAlignment="Center" />
+            <ui:Card
+                Grid.Column="0"
+                Height="80"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+                <Grid Height="80">
+                    <TextBlock
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="{Binding ViewModel.RevCount, Mode=OneWay}" />
+                    <TextBlock
+                        Margin="0,30,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="{Binding ViewModel.Flags, Mode=OneWay}" />
+                </Grid>
+            </ui:Card>
+
+            <ui:CardControl
+                Grid.Column="1"
+                Width="80"
+                Height="80"
+                Margin="20,0,0,0"
+                Background="{Binding ViewModel.Colour}"
+                FontSize="25"
+                Visibility="{Binding ViewModel.FlagVisisble}" />
+
+            <ui:Button
+                Grid.Column="2"
+                Margin="20,0,0,0"
+                Command="{Binding ViewModel.CounterIncrementCommand, Mode=OneWay}"
+                Content="Send Data"
+                FontSize="25" />
+
+            <ui:TextBox
+                Grid.Column="3"
+                Width="200"
+                Height="40"
+                Margin="20,0,0,0"
+                TextChanged="OnTextChangedEventHandler" />
+
+
         </Grid>
     </Grid>
-    
-</Page> 
+
+</Page>

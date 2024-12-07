@@ -1,5 +1,6 @@
 ﻿using IRSDKSharper;
 using SubparRacing.ViewModels.Windows;
+using System.ComponentModel;
 using System.Diagnostics;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
@@ -52,6 +53,13 @@ namespace SubparRacing.Views.Windows
 
             // Make sure that closing this window will begin the process of closing the application.
             Application.Current.Shutdown();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            App.TelemetryService.Stop();
+
+            base.OnClosing(e);
         }
 
         INavigationView INavigationWindow.GetNavigation()

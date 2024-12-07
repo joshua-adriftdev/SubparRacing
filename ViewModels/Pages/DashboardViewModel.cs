@@ -1,9 +1,12 @@
-﻿namespace SubparRacing.ViewModels.Pages
+﻿using System.Diagnostics;
+using System.Windows.Controls;
+
+namespace SubparRacing.ViewModels.Pages
 {
     public partial class DashboardViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private int _counter = 0;
+        public event Action? OnButtonClick;
+        public event Action<string>? OnTextChange;
 
         [ObservableProperty]
         public string revCount = "No RPM";
@@ -15,12 +18,15 @@
         public string flags = "";
 
         [ObservableProperty]
-        public string yellow = "HIDDEN";
+        public string flagVisisble = "HIDDEN";
+
+        [ObservableProperty]
+        public string colour = "BLACK";
 
         [RelayCommand]
         private void OnCounterIncrement()
         {
-            Counter++;
+            OnButtonClick?.Invoke();
         }
     }
 }

@@ -26,7 +26,9 @@ namespace SubparRacing.ViewModels.Pages
         [RelayCommand]
         private void OnCounterIncrement()
         {
-            OnButtonClick?.Invoke();
+            App.randomDataSender.Start();
+            Debug.WriteLine("Started Random Data Sender");
+
         }
     }
 }

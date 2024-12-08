@@ -20,6 +20,7 @@ namespace SubparRacing
     public partial class App
     {
         public static TelemetryService TelemetryService { get; private set; }
+        public static RandomDataSender randomDataSender { get; private set; }
 
         static readonly byte[] handshake = { (byte)'s', (byte)'u', (byte)'b', (byte)'p', (byte)'a', (byte)'r' };
         public static readonly ArduinoConnection arduinoConnection = new ArduinoConnection(handshake);
@@ -89,7 +90,7 @@ namespace SubparRacing
             Debug.Write("Connecting to Arduino...");
             arduinoConnection.Start();
 
-            RandomDataSender randomDataSender = new RandomDataSender(arduinoConnection);
+            randomDataSender = new RandomDataSender(arduinoConnection);
             //randomDataSender.Start();
 
         }
@@ -113,6 +114,7 @@ namespace SubparRacing
         /// </summary>
         private async void OnExit(object sender, ExitEventArgs e)
         {
+            randomDataSender.Stop();
             arduinoConnection.Stop();
             TelemetryService.Stop();
 

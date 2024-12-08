@@ -175,7 +175,7 @@ namespace SubparRacing
 
                             Debug.WriteLine("E2 - " + String.Join(", ", handshake) + " - " + handshake.Length);
 
-                            finalPort.Write(handshake, 0, handshake.Length); //Send private handshake to Arduino
+                            finalPort.WriteLine("subpar"); //Send private handshake to Arduino
 
                             Debug.WriteLine("F");
 
@@ -306,9 +306,10 @@ namespace SubparRacing
 
             try
             {
-                string dataToSend = $"{key}:{value}";
+                //string dataToSend = $"{key}•{value}";
+                string dataToSend = $"DEBUG:{value}";
                 arduinoPort.WriteLine(dataToSend);
-                //Debug.WriteLine($"Sent to Arduino: {dataToSend}");
+                Debug.WriteLine($"Sent to Arduino: {dataToSend}");
             }
             catch (Exception ex)
             {

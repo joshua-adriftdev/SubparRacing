@@ -70,3 +70,7 @@ E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\osx
 E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
 E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.IO.Ports.dll
 E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.IO.Ports.dll
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\SubparRacing.dll.config
+E:\Subpar Racing\SubparRacing\SubparRacing\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+E:\Subpar Racing\SubparRacing\SubparRacing\obj\Debug\net8.0-windows\Views\Pages\LayoutPage.g.cs
+E:\Subpar Racing\SubparRacing\SubparRacing\obj\Debug\net8.0-windows\Views\Pages\LayoutPage.baml

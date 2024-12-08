@@ -21,7 +21,7 @@ namespace SubparRacing
             run = true;
 
             // Run in a separate thread to avoid blocking the main application
-            Thread gearSenderThread = new Thread(() =>
+            /*Thread gearSenderThread = new Thread(() =>
             {
                 while (run)
                 {
@@ -34,12 +34,12 @@ namespace SubparRacing
                     // Wait for 2 seconds before sending the next number
                     Thread.Sleep(2000);
                 }
-            });
+            });*/
 
             Thread lapTimeThread = new Thread(() =>
             {
                 Stopwatch stopwatch = new Stopwatch();
-                int frameDelay = 1000 / 30; // 30 FPS = ~33ms per frame
+                int frameDelay = 1000 / 12; // 30 FPS = ~33ms per frame
 
                 while (run)
                 {
@@ -63,7 +63,7 @@ namespace SubparRacing
                 }
             });
 
-            gearSenderThread.Start();
+            //gearSenderThread.Start();
             lapTimeThread.Start();
         }
 

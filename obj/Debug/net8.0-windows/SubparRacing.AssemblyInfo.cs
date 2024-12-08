@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SubparRacing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fce87aafa69bfcd46e640cdb4d3f87eb118ca1c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edd9c58c545c575d1d740a80d5928f1bb88ca25c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SubparRacing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SubparRacing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

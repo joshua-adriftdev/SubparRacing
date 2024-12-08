@@ -19,6 +19,12 @@ namespace SubparRacing.ViewModels.Windows
             },
             new NavigationViewItem()
             {
+                Content = "Layout",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.AlignDistributeLeft16 },
+                TargetPageType = typeof(Views.Pages.LayoutPage)
+            },
+            new NavigationViewItem()
+            {
                 Content = "Data",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
                 TargetPageType = typeof(Views.Pages.DataPage)

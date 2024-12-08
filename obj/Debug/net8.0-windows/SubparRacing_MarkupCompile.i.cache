@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 E:\Subpar Racing\SubparRacing\SubparRacing\App.xaml
-4-1625266654
+5-1202441182
 1-1036307733
-23525794865
-230-1624691775
-Views\Pages\DashboardPage.xaml;Views\Pages\DataPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
+281978654962
+231295016638
+Views\Pages\DashboardPage.xaml;Views\Pages\DataPage.xaml;Views\Pages\LayoutPage.xaml;Views\Pages\SettingsPage.xaml;Views\Windows\MainWindow.xaml;
 
-True
+False
 

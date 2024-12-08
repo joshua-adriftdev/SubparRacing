@@ -307,7 +307,8 @@ namespace SubparRacing
             try
             {
                 //string dataToSend = $"{key}•{value}";
-                string dataToSend = $"DEBUG:{value}";
+                string delimiter = "{|}";
+                string dataToSend = $"{key}{delimiter}{value}";
                 arduinoPort.WriteLine(dataToSend);
                 Debug.WriteLine($"Sent to Arduino: {dataToSend}");
             }

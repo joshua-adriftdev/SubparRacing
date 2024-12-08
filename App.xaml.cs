@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using SubparRacing.Services;
 using SubparRacing.ViewModels.Pages;
 using SubparRacing.ViewModels.Windows;
@@ -8,6 +9,7 @@ using SubparRacing.Views.Pages;
 using SubparRacing.Views.Windows;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Ports;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
@@ -19,6 +21,7 @@ namespace SubparRacing
     /// </summary>
     public partial class App
     {
+        public static DisplayLayoutManager DisplayLayoutManager { get; private set; } = new DisplayLayoutManager();
         public static TelemetryService TelemetryService { get; private set; }
         public static RandomDataSender randomDataSender { get; private set; }
 
@@ -55,6 +58,8 @@ namespace SubparRacing
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
 
+                services.AddSingleton<LayoutPage>();
+                services.AddSingleton<LayoutViewModel>();
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
@@ -100,6 +105,14 @@ namespace SubparRacing
             arduinoIsConnected = true;
 
             Debug.WriteLine($"Arduino connected on port {connectionInformation.ArduinoPort?.PortName}!");
+
+            SyncLayoutToArduino(DisplayLayoutManager.LoadLayout());
+        }
+
+        public void SyncLayoutToArduino(DisplayLayout layout)
+        {
+            string json = JsonConvert.SerializeObject(layout);
+            arduinoConnection.SendData("LAYOUT", json);  // Send layout data as JSON string
         }
 
         private void OnArduinoDisconnected(object connection, ArduinoConnection.ConnectionEventArgs connectionInformation)

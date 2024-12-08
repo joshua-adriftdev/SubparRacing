@@ -42,11 +42,6 @@
                 VerticalAlignment="Top">
                 <Grid Height="80">
                     <TextBlock
-                        Margin="0,0,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Text="{Binding ViewModel.RevCount, Mode=OneWay}" />
-                    <TextBlock
                         Margin="0,30,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
